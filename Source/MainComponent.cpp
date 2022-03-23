@@ -62,7 +62,16 @@ void MainComponent::releaseResources()
 void MainComponent::paint (juce::Graphics& g)
 {
     // (Our component is opaque, so we must completely fill the background with a solid colour)
-    g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));
+    g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));   // clear the background
+
+    g.setColour (juce::Colours::lightgrey);
+    g.drawRect (getLocalBounds(), 1);   // draw an outline around the component
+
+    g.setColour (juce::Colours::black);
+    g.setFont (25.0f);
+    g.drawText ("Welcome to Unplugged21 Productions... The application will take audio (song) file as input and will return the time signature calculations of the song with JUCE framework and OOP in c++11", getLocalBounds(),
+                juce::Justification::topLeft, true);   // draw some placeholder text
+
 
     // You can add your drawing code here!
 }
